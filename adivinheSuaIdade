@@ -1,0 +1,27 @@
+import random
+
+print("Vou adivinhar sua idade. Pense em um número e não me conte.")
+input("Quando estiver pronto, pressione enter para continuar.")
+
+tentativas = 0
+minimo = 0
+maximo = 100
+chute = random.randint(minimo, maximo)
+
+while True:
+  chute_str = str(chute)
+  resposta = input(f"Será que sua idade é {chute_str}? (maior, menor ou igual) ")
+
+  if resposta == "maior":
+    minimo = chute + 1
+    chute = random.randint(minimo, maximo)
+    tentativas += 1
+  elif resposta == "menor":
+    maximo = chute - 1
+    chute = random.randint(minimo, maximo)
+    tentativas += 1
+  elif resposta == "igual":
+    print(f"Acertei sua idade em {tentativas} tentativas!")
+    break
+  else:
+    print("Resposta inválida. Por favor, responda 'maior', 'menor' ou 'igual'.")
